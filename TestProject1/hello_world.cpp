@@ -416,3 +416,4 @@ int main()
     total %= 100;
     cout << " dollars and " << total << " cents\n";
 }
+//p151
