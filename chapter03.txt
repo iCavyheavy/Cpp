@@ -1,0 +1,445 @@
+//Глава 3 • Объекты. типы и значения
+/*
+На каждом этапе выполнения задания запускайте программу и убеждайтесь,
+что она делает именно то, что вы ожидали. Составьте список сделанных
+ошибок, чтобы вы могли избегать их в будущем .
+1. Напишите программу, формирующую простую форму для письма на
+основе входной информации. Для начала наберите программу из раздела
+3.1 , предложив пользователю ввести свое имя и предусмотрев
+вывод строки "Привет, first_name", где first_name - это имя, введенное
+пользователем. Затем модифицируйте программу следующим
+образом: измените приглашение на строку "Введите имя адресата" и
+измените вывод на строку "Дорогой first_name , " (не забудьте о запятой!) .
+2. Введите одну или две вступительные фразы, например "Как дела?
+У меня все хорошо. Я скучаю по тебе" . Убедитесь, что первая строка
+отделена от других. Добавьте еще несколько строк по своему усмотрению
+- это же ваше письмо.
+3. Предложите пользователю ввести имя другого приятеля и сохраните
+его в переменной friend_ name. Добавьте в ваше письмо следующую
+строку: "Давно ли ты встречал friend _ name?" .
+4. Объявите переменную типа char с именем friend_sex и инициализируйте
+ее нулем . Предложите пользователю ввести значение m, если
+ваш друг - мужчина, и f - если женщина. Присвойте переменной
+friend_ sex введенное значение. Затем с помощью двух инструкций if
+запишите следующее.
+Если друг - мужчина, то напишите строку "Если ты увидишь friend_
+name, пожалуйста, попроси его позвонить мне" .
+Если друг - женщина, то напишите строку "Если ты увидишь friend_
+name, пожалуйста, попроси ее позвонить мне".
+5. Предложите пользователю ввести возраст адресата и присвойте его
+переменной age, имеющей тип int. Ваша программа должна вывести
+на экран строку "Я слышал , ты только что отметил день рождения и
+тебе исполнилось age лет". Если значение переменной age меньше или
+равно О или больше или равно 110, выполните вызов simple_error("Ты шутишь!" ), 
+используя функцию simple_error() из заголовочного файла std_lib_facilities.h.
+6. Добавьте в ваше письмо следующее.
+Если вашему другу меньше 12 лет, напишите "На следующий год тебе исполнится age+1 лет".
+Если вашему другу 17 лет, напишите "В следующем году ты сможешь голосовать".
+Если вашему другу больше 70 лет, напишите "Я надеюсь, что ты не скучаешь на пенсии".
+Убедитесь, что ваша программа правильно обрабатывает каждое из этих значений.
+7. Добавьте строку "Искренне твой", затем введите две пустые строки для
+подписи и укажите свое имя.
+*/
+
+#include <std_lib_facilities.h>
+int main()
+{
+    cout << "Enter the recipient's name (and press 'enter'): \n ";
+    string first_name;
+    string friend_name;
+    cin >> first_name;
+    cout << "Enter the friend's name (and press 'enter'): \n ";
+    cin >> friend_name;
+    cout << "Dear, " << first_name << "! \n" << "How are you? I'm good." << " \n"
+        << "How long have you met " << friend_name << "? \n\n";
+
+    char friend_sex = 0;
+    cout << "If your friend is male type - m, if woman type - f (and press 'enter'): \n ";
+    cin >> friend_sex;
+    if (friend_sex == 'm')
+        cout << "When you will see " << friend_name << ", ask him to call me please. \n";
+    if (friend_sex == 'f')
+        cout << "When you will see " << friend_name << ", ask her to call me please. \n\n";
+
+    int age = 0;
+    cout << "Enter yor friend's age: \n";
+    cin >> age;
+    if (age <= 0 or age >= 110) {
+        simple_error("you're kidding!");
+    }
+    cout << "I heard that you just celebrated your birthday, and you are " << age << " years now.\n";
+    if (age < 12)
+        cout << "Next year you will be " << age + 1 << " !\n";
+    if (age == 17)
+        cout << "Next year you can vote!\n";
+    if (age > 70)
+        cout << "I hope you don't miss retirement!\n";
+
+    cout << "\n\nSincerely yours, \n\nMax P.";
+}
+
+
+//Упражнения
+/*2. Напишите на языке С++ программу, которая преобразует мили в километры. 
+Ваша программа должна содержать понятное приглашение
+пользователю ввести количество миль. Указание: в одной миле 1.609 км.
+*/
+
+//miles to kilometers
+#include <std_lib_facilities.h>
+int main()
+{
+    double ml = 0;
+    cout << "Type distance in miles you want to convert to kilometers.\n";
+    cin >> ml;
+    double km = ml * 1.609;
+    cout << ml << " is " << km << "\n";
+}
+
+
+/*
+4. Напишите программу, предлагающую пользователю ввести два целочисленных
+значения. Запишите эти значения в переменные типа int
+с именами vall и val2. Напишите программу, определяющую наименьшее
+и наибольшее значения, а также сумму, разность, произведение
+и частное этих значений.
+5. Измените программу так, чтобы она просила пользователя ввести два
+числа с плавающей точкой и сохраняла их в переменных типа douЬle.
+Сравните результаты работы этих двух программ для некоторых входных
+данных на ваш выбор. Совпадают ли эти результаты? Должны ли
+они совпадать? Чем они различаются?
+*/
+
+//lowes val, biggest val, +, -, *, /.
+#include <std_lib_facilities.h>
+int main()
+{
+    double val1;
+    double val2;
+    cout << "Enter values you want to compare\nValue1: ";
+    cin >> val1;
+    cout << "\nValue2: ";
+    cin >> val2;
+    cout << "What do you want to do with this values?\ncompare;\nadd;\nsub;\nmul;\ndiv;\n";
+    string ansver;
+    cin >> ansver;
+    double solution;
+    if (ansver == "compare") {
+        if (val1 > val2) {
+            cout << val1 << " is bigger.\n";
+        }
+        if (val2 > val1) {
+            cout << val2 << " is bigger.\n";
+        }
+        if (val1 == val2) {
+            cout << val1 << " and " << val2 << " are equal.\n";
+        }
+    }
+
+    if (ansver == "add") {
+        cout << "The solution is " << val1 + val2 << ".\n";
+    }
+    if (ansver == "sub") {
+        cout << "The solution is " << val1 - val2 << ".\n";
+    }
+    if (ansver == "mul") {
+        cout << "The solution is " << val1 * val2 << ".\n";
+    }
+    if (ansver == "div") {
+        cout << "The solution is " << val1 / val2 << ".\n";
+    }
+}
+
+
+/*
+6. Напишите программу. предлагающую пользователю ввести три целых
+числа, а затем выводит их в порядке возрастания, разделяя запятыми. 
+Например, если пользователь вводит числа 10 4 6. то программа
+должна вывести на экран числа 4, 6, 10. Если два числа совпадают, то
+они должны идти одно за другим. Например. если пользователь вводит
+числа 4 5 4, то программа должна вывести на экран 4, 4, 5.
+*/
+
+//sort 3 values;
+#include <std_lib_facilities.h>
+int main()
+{
+    double val1;
+    double val2;
+    double val3;
+    double min;
+    double mid;
+    double max;
+    cout << "Enter values you want to sort\nValue1: ";
+    cin >> val1;
+    min = val1;
+    cout << "\nValue2: ";
+    cin >> val2;
+    if (val2 <= min) {
+        mid = min;
+        min = val2;
+    }
+    if (val2 > min) {
+        mid = val2;
+    }
+    cout << "\nValue3: ";
+    cin >> val3;
+    if (val3 <= mid) {
+        if (val3 <= min) {
+            max = mid;
+            mid = min;
+            min = val3;
+        }
+        if (val3 > min) {
+            max = mid;
+            mid = val3;
+        }
+    }
+    if (val3 > mid) {
+        max = val3;
+    }
+    cout << min << ", " << mid << ", " << max << ".\n";
+}
+
+
+/*
+7. Выполните упр. 6 для трех строковых значений. Так, если пользователь
+вводит значения Steinbeck, Hemingway, Fitzgerald, то вывод
+программы должен имеет вид Fitzgerald, Hemingway. Steinbeck.
+*/
+
+//sort 3 strings;
+#include <std_lib_facilities.h>
+int main()
+{
+    string str1;
+    string str2;
+    string str3;
+    string min;
+    string mid;
+    string max;
+    cout << "Enter values you want to sort\nValue1: ";
+    cin >> str1;
+    min = str1;
+    cout << "\nValue2: ";
+    cin >> str2;
+    if (str2 <= min) {
+        mid = min;
+        min = str2;
+    }
+    if (str2 > min) {
+        mid = str2;
+    }
+    cout << "\nValue3: ";
+    cin >> str3;
+    if (str3 <= mid) {
+        if (str3 <= min) {
+            max = mid;
+            mid = min;
+            min = str3;
+        }
+        if (str3 > min) {
+            max = mid;
+            mid = str3;
+        }
+    }
+    if (str3 > mid) {
+        max = str3;
+    }
+    cout << min << ", " << mid << ", " << max << ".\n";
+}
+
+
+/*
+8. Напишите программу. проверяющую четность или нечетность целых
+чисел. Как всегда. убедитесь, что вывод программы ясен и полон. Иначе
+говоря, не следует ограничиваться простой констатацией вроде
+"да" или "вет". Вывод должен быть информативным, например "Число 4 является четным". 
+Подсказка: см. оператор вычисления остатка в разделе 3.4.
+*/
+
+#include <std_lib_facilities.h>
+int main()
+{
+    int odd_even;
+    int val1 = 0;
+    cout << "Enter value to check for even or odd parity:";
+    cin >> odd_even;
+    val1 = odd_even % 2;
+    if (val1 == 0) {
+        cout << "Number " << odd_even << " is even\n";
+    }
+    if (val1 != 0) {
+        cout << "Number " << odd_even << " is odd\n";
+    }
+}
+
+
+/*
+9. Напишите программу, преобразующую слова "нуль", "два" и так далее
+в цифры 0, 2 и т.д. Когда пользователь вводит число в виде слова, программа
+должна вывести на экран соответствующую цифру. Выполните
+эту программу для цифр 0, 1 , 2, 3 и 4. Если пользователь введет
+что-нибудь другое, например фразу "rлупый компьютер!", программа
+должна ответить "Я не знаю такоrо числа!"
+*/
+
+#include <std_lib_facilities.h>
+int main()
+{
+    string words;
+    int val1 = 0;
+    cout << "Enter \"zero\", \"one\", \"two\", \"three\" or \"four\"\n";
+    cin >> words;
+    if (words == "zero") {
+        cout << "0\n";
+        val1 = 1;
+    }
+    if (words == "one") {
+        cout << "1\n";
+        val1 = 1;
+    }
+    if (words == "two") {
+        cout << "2\n";
+        val1 = 1;
+    }
+    if (words == "three") {
+        cout << "3\n";
+        val1 = 1;
+    }
+    if (words == "four") {
+        cout << "4\n";
+        val1 = 1;
+    }
+    if (val1 != 1) {
+        cout << "I dont know this number!\n";
+    }
+}
+
+
+/*
+10. Напишите программу, принимающую на входе символ операции с
+двумя операндами и выводящую на экран результат вычисления. Например:
++ 100 3.14
+* 4 5
+Считайте символ операции в строку с именем operation и, используя
+инструкцию if, выясните, какую операцию хочет выполнить пользователь,
+например if (operation= " + " ) . Считывайте операнды в переменные
+типа douЫe. Выполните операции + , -, *· /, plus, minus, mul и
+div, имеющие очевидный смысл.
+*/
+
+#include <std_lib_facilities.h>
+int main()
+{
+    double val1;
+    double val2;
+    string operation;
+    cout << "Enter expression (example: + 100 3.14)\n";
+    cin >> operation >> val1 >> val2;
+    if (operation == "+") {
+        cout << val1 + val2 << "\n";
+    }
+    if (operation == "-") {
+        cout << val1 - val2 << "\n";
+    }
+    if (operation == "*") {
+        cout << val1 * val2 << "\n";
+    }
+    if (operation == "/") {
+        cout << val1 / val2 << "\n";
+    }
+}
+
+
+/*
+11. Напишите программу. предлагающую пользователю ввести определенное
+количество 1-, 5-, 10- , 25-, 50-центовых и долларовых монет.
+Пользователь должен по отдельности ввести количество монет каждого
+достоинства, например "Сколько у вас одвоцевтовьп монет?"
+Затем программа должна вывести результат примерно такого вида.
+У аас 23 одноцентовwх нонет.
+У аас 17 пятицентовwх нонет.
+У вас 14 десятицентовwх нонет.
+У вас 7 двадцатипятицентовwх нонет.
+У вас 3 пятидесятицентовwх нонет.
+Общая стоимость ваших нонет равна 573 центам.
+Усовершенствуйте программу: если у пользователя только одна монета,
+выведите ответ в грамматически правильной форме. Например,
+"14 десятицентовых монет" и "1 одвоцевтовая монета" (а не " 1 одноцевтовых
+монет"). Кроме того, выведите результат в долларах и
+центах, т.е. 5 долларов 73 цента. а не 573 цента.
+*/
+
+#include <std_lib_facilities.h>
+int main()
+{
+    unsigned long long coin1 = 0;
+    unsigned long long coin5 = 0;
+    unsigned long long coin10 = 0;
+    unsigned long long coin25 = 0;
+    unsigned long long coin50 = 0;
+    unsigned long long total = 0;
+    unsigned long tempval = 0;
+    cout << "How many one cent coins do you have?\n";
+    cin >> coin1;
+    cout << "How many five cent coins do you have?\n";
+    cin >> coin5;
+    cout << "How many dimes do you have?\n";
+    cin >> coin10;
+    cout << "How many quarters do you have?\n";
+    cin >> coin25;
+    cout << "How many fifty cent coins do you have?\n";
+    cin >> coin50;
+    if (coin1 == 1) {
+        cout << "You have 1 cent\n";
+    }
+    else {
+        cout << "You have " << coin1 << " cents\n";
+    }
+    if (coin5 == 1) {
+        cout << "You have 1 five cent coin\n";
+    }
+    else {
+        cout << "You have " << coin5 << " five cent coins\n";
+    }
+    if (coin10 == 1) {
+        cout << "You have 1 dime\n";
+    }
+    else {
+        cout << "You have " << coin10 << " dimes\n";
+    }
+    if (coin25 == 1) {
+        cout << "You have 1 quarter\n";
+    }
+    else {
+        cout << "You have " << coin25 << " quarters\n";
+    }
+    if (coin50 == 1) {
+        cout << "You have 1 fifty cent coin\n";
+    }
+    else {
+        cout << "You have " << coin50 << " fifty cent coins\n";
+    }
+    total = coin1 * 1 + coin5 * 5 + coin10 * 10 + coin25 * 25 + coin50 * 50;
+    if (total == 1) {
+        cout << "You have 1 cent\n";
+    }
+    else {
+        cout << "Total amount of your coins is " << total << " cents\n";
+        tempval = total / 100;
+        if (tempval == 1) {
+            cout << "It's 1 dollar";
+        }
+        else {
+            cout << "It's " << tempval << " dollars";
+        }
+        total %= 100;
+        if (total == 1) {
+            cout << " and 1 cent\n";
+        }
+        else {
+            cout << " and " << total << " cents\n";
+        }
+    }
+}
