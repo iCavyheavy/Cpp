@@ -1,0 +1,139 @@
+/*ПОПРОБУЙТЕ
+Используя приведенный выше пример, напишите программу для
+перевода гривен, рублей и юаней в доллары. Если вы любите реализм,
+уточните обменные курсы в Интернете .*/
+
+#include <std_lib_facilities.h>
+int main()
+{
+    constexpr double UAH = 27.34;
+    constexpr double RUB = 72.26;
+    constexpr double CNY = 6.46;
+    double length = 0;
+    string currency = " ";
+    cout << "What amount and currency you want to convert to dollars? (UAH, RUB, CNY)\n";
+    cin >> length >> currency;
+    if (currency == "UAH" || currency == "uah") {
+        cout << length << " UAH is " << length / UAH << " USD.\n";
+    }
+    else if (currency == "RUB" || currency == "rub") {
+        cout << length << " RUB is " << length / RUB << " USD.\n";
+    }
+    else if (currency == "CNY" || currency == "cny") {
+        cout << length << " CNY is " << length / CNY << " USD.\n";
+    }
+    else {
+        cout << "I don't know what is " << currency << " , sorry.\n";
+    }
+}
+
+
+/*ПОПРОБУЙТЕ
+Пе репишите программу преобразования валют из п редыдущего раздела,
+используя и нструкцию switch. Добавьте конвертацию евро и фунта стерлингов.
+Какую из версий программы легче писать, понимать и модифицировать? Почему?*/
+
+#include <std_lib_facilities.h>
+int main()
+{
+    double amount;
+    constexpr double exch_uah = 27.34;
+    constexpr double exch_rub = 72.13;
+    constexpr double exch_eur = 0.84;
+    constexpr double exch_gbp = 0.72;
+    constexpr double exch_cny = 6.46;
+    char currency;
+    cout << "Enter amount and currency you want to convert to USD.\nAvailable currencies:\nu - for UAH\nr - for RUB\ne - for EUR\ng - for GBP\nc - for CNY\n\nAmount: ";
+    cin >> amount;
+    cout << "Currency: ";
+    cin >> currency;
+    switch (currency) {
+    case 'u':
+        cout << amount << " UAH is " << amount / exch_uah << " USD.\n";
+        break;
+    case 'r':
+        cout << amount << " RUB is " << amount / exch_rub << " USD.\n";
+        break;
+    case 'e':
+        cout << amount << " EUR is " << amount / exch_eur << " USD.\n";
+        break;
+    case 'g':
+        cout << amount << " GBP is " << amount / exch_gbp << " USD.\n";
+        break;
+    case 'c':
+        cout << amount << " CNY is " << amount / exch_cny << " USD.\n";
+        break;
+
+    default:
+        cout << "Unkown curency.\n";
+        break;
+    }
+}
+
+
+/*ПОПРОБУЙТЕ
+Символ 'b' равен char ('a'+l) , 'c' равен char ('a'+2) и т.д. Используя
+цикл, выведите на экран таблицу символов и соответствующих
+им целочисленных значений.*/
+
+#include <std_lib_facilities.h>
+int main()
+{
+    char a = 'a';
+    int i = a;
+    while (i <= 'z') {
+        cout << i << "\t" << a << "\n";
+        i++;
+        a = i;
+    }
+}
+
+
+/*ПОПРОБУЙТЕ
+Перепишите программу из предыдущей врезки "Попробуйте", выводящую
+символы и соответствующие им целочисленные значения.
+с помощью инструкции for. Затем модифицируйте программу так.
+чтобы таблица содержала значения для прописных символов и цифр.*/
+
+#include <std_lib_facilities.h>
+int main()
+{
+    char a = 'a';
+    char A = 'A';
+    char num = '0';
+    for (int i = a; i <= 'z'; i++) {
+        a = i;
+        cout << i << "\t" << a << "\n";
+    }
+    for (int i = A; i <= 'Z'; i++) {
+        A = i;
+        cout << i << "\t" << A << "\n";
+    }
+    for (int i = num; i <= '9'; i++) {
+        num = i;
+        cout << i << "\t" << num << "\n";
+    }
+}
+
+
+/*ПОПРОБУЙТЕ
+Реализуйте функцию square(), не используя оператор умножения;
+иначе говоря, выполните умножение х*х с помощью повторяющегося
+сложения (начните с переменной, равной нулю, и х раз добавьте к ней
+число х). Затем выполните версию "первопрограммы", используя функцию
+square().*/
+
+#include <std_lib_facilities.h>
+int squaredsd(int x)
+{
+    int y = 0;
+    for (int i = 0; i < x; i++) {
+        y += x;
+    }
+    return y;
+}
+int main()
+{
+    cout << squaredsd(4) << '\n';
+    cout << squaredsd(10) << '\n';
+}
