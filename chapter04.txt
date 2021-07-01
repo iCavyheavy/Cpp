@@ -137,3 +137,113 @@ int main()
     cout << squaredsd(4) << '\n';
     cout << squaredsd(10) << '\n';
 }
+
+
+
+/*
+//В качестве примера вычислим среднее и медиану значений температур.
+#include <std_lib_facilities.h>
+//#include <iostream>
+//#include <vector>
+//using namespace std;
+int main()
+{
+    vector<double> temps;
+    for (double tеmр; cin >> tеmр;)
+        temps.push_back(tеmр);
+        double sum = 0;
+    for (int х : temps) sum += х;
+        cout << "Средняя температура: " << sum / temps.size() << "\n";
+        sort(temps);
+        cout << "Медианная температура : " << temps[temps.size() / 2] << "\n";
+    }
+*/
+
+/*
+#include <std_lib_facilities.h>
+int main()
+{
+    vector<string> words;
+    for (string temp; cin >> temp;)
+        words.push_back(temp);
+    cout << "Количество слов : " << words.size() << "\n";
+    sort(words); // Сортировка слов
+    for (int i = 0; i < words.size(); ++i)
+        if (i == 0 || words[i - 1] != words[i]) // Это новое слово ?
+            cout << words[i] << "\n";
+}
+*/
+
+/*
+#include <std_lib_facilities.h>
+int main()
+{
+    string disliked = "Broccoli";
+    vector<string> words;
+    for (string temp; cin >> temp;)
+        words.push_back(temp);
+    cout << "Количество слов : " << words.size() << "\n";
+    sort(words); // Сортировка слов
+    for (int i = 0; i < words.size(); ++i)
+    {
+        if (words[i] == disliked)
+            words[i] = "bleep";
+        cout << words[i] << "\n";
+    }
+}
+*/
+
+
+/*Задание Выполните задание шаг за шагом. Не следует торопиться и пропускать
+этапы . На каждом этапе проверьте программу, введя по крайней мере три
+пары значений - чем больше, тем лучше.*/
+/*1 . Напишите программу. содержащую цикл while, в котором считываются
+и выводятся на экран два числа типа int. Для выхода из программы
+используйте символ '|'.*/
+/*
+#include <std_lib_facilities.h>
+int main()
+{
+    int x;
+    vector<int> nums;
+    while (cin >> x)
+        nums.push_back(x);
+    cout << nums[0] << "\n" << nums[1];
+}
+*/
+
+
+/*2. Измените программу так. чтобы она выводила на экран строку "Наименьшее
+значение равно : " с последующим наименьшим значением,
+а затем - строку " Наибольшее значение равно : " с последующим наибольшим
+значением.*/
+/*
+#include <std_lib_facilities.h>
+int main()
+{
+    int x;
+    vector<int> nums;
+    while (cin >> x)
+        nums.push_back(x);
+    sort(nums);
+    cout << "lowest value is: " << nums[0] << "\n" << "highest value is: " << nums[1] << "\n";
+}
+*/
+//почему не влазят большие значения??? Они не больше инта...
+
+
+/*3. Исправьте программу так. чтобы она выводила строку "Числа равны" ,
+но только при равенстве введенных чисел.*/
+#include <std_lib_facilities.h>
+int main()
+{
+  //  int x;
+  //  vector<int> nums;
+ //   while (cin >> x)
+   //     nums.push_back(x);
+ //   sort(nums);
+    //cout << "lowest value is: " << nums[0] << "\n" << "highest value is: " << nums[1] << "\n";
+   // for (int i = 0; i < nums.size(); ++i)
+ //       if (nums[i-1] == nums[i])//|| nums[i - 1] == nums[i])
+   //         cout << nums[i] << " equal\n";
+}
