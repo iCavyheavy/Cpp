@@ -2,7 +2,7 @@
 Используя приведенный выше пример, напишите программу для
 перевода гривен, рублей и юаней в доллары. Если вы любите реализм,
 уточните обменные курсы в Интернете .*/
-
+/*
 #include <std_lib_facilities.h>
 int main()
 {
@@ -26,13 +26,15 @@ int main()
         cout << "I don't know what is " << currency << " , sorry.\n";
     }
 }
+*/
 
 
+//p149 try
 /*ПОПРОБУЙТЕ
 Пе репишите программу преобразования валют из п редыдущего раздела,
 используя и нструкцию switch. Добавьте конвертацию евро и фунта стерлингов.
 Какую из версий программы легче писать, понимать и модифицировать? Почему?*/
-
+/*
 #include <std_lib_facilities.h>
 int main()
 {
@@ -69,13 +71,14 @@ int main()
         break;
     }
 }
+*/
 
 
 /*ПОПРОБУЙТЕ
 Символ 'b' равен char ('a'+l) , 'c' равен char ('a'+2) и т.д. Используя
 цикл, выведите на экран таблицу символов и соответствующих
 им целочисленных значений.*/
-
+/*
 #include <std_lib_facilities.h>
 int main()
 {
@@ -87,6 +90,7 @@ int main()
         a = i;
     }
 }
+*/
 
 
 /*ПОПРОБУЙТЕ
@@ -94,7 +98,7 @@ int main()
 символы и соответствующие им целочисленные значения.
 с помощью инструкции for. Затем модифицируйте программу так.
 чтобы таблица содержала значения для прописных символов и цифр.*/
-
+/*
 #include <std_lib_facilities.h>
 int main()
 {
@@ -114,6 +118,7 @@ int main()
         cout << i << "\t" << num << "\n";
     }
 }
+*/
 
 
 /*ПОПРОБУЙТЕ
@@ -122,7 +127,7 @@ int main()
 сложения (начните с переменной, равной нулю, и х раз добавьте к ней
 число х). Затем выполните версию "первопрограммы", используя функцию
 square().*/
-
+/*
 #include <std_lib_facilities.h>
 int squaredsd(int x)
 {
@@ -136,60 +141,6 @@ int main()
 {
     cout << squaredsd(4) << '\n';
     cout << squaredsd(10) << '\n';
-}
-
-
-
-/*
-//В качестве примера вычислим среднее и медиану значений температур.
-#include <std_lib_facilities.h>
-//#include <iostream>
-//#include <vector>
-//using namespace std;
-int main()
-{
-    vector<double> temps;
-    for (double tеmр; cin >> tеmр;)
-        temps.push_back(tеmр);
-        double sum = 0;
-    for (int х : temps) sum += х;
-        cout << "Средняя температура: " << sum / temps.size() << "\n";
-        sort(temps);
-        cout << "Медианная температура : " << temps[temps.size() / 2] << "\n";
-    }
-*/
-
-/*
-#include <std_lib_facilities.h>
-int main()
-{
-    vector<string> words;
-    for (string temp; cin >> temp;)
-        words.push_back(temp);
-    cout << "Количество слов : " << words.size() << "\n";
-    sort(words); // Сортировка слов
-    for (int i = 0; i < words.size(); ++i)
-        if (i == 0 || words[i - 1] != words[i]) // Это новое слово ?
-            cout << words[i] << "\n";
-}
-*/
-
-/*
-#include <std_lib_facilities.h>
-int main()
-{
-    string disliked = "Broccoli";
-    vector<string> words;
-    for (string temp; cin >> temp;)
-        words.push_back(temp);
-    cout << "Количество слов : " << words.size() << "\n";
-    sort(words); // Сортировка слов
-    for (int i = 0; i < words.size(); ++i)
-    {
-        if (words[i] == disliked)
-            words[i] = "bleep";
-        cout << words[i] << "\n";
-    }
 }
 */
 
@@ -208,7 +159,8 @@ int main()
     vector<int> nums;
     while (cin >> x)
         nums.push_back(x);
-    cout << nums[0] << "\n" << nums[1];
+    for (int i = 0; i < 2; ++i)
+            cout << nums[i] << "\n";
 }
 */
 
@@ -226,24 +178,178 @@ int main()
     while (cin >> x)
         nums.push_back(x);
     sort(nums);
-    cout << "lowest value is: " << nums[0] << "\n" << "highest value is: " << nums[1] << "\n";
+    for (int i = 0; i < nums.size(); ++i)
+    {
+        if (i == 0)
+        {
+            cout << "Lowest value is: " << nums[i] << "\n";
+        }
+        else if (i == nums.size() - 1)
+        {
+            cout << "Highest value is: " << nums[i] << "\n";
+        }
+    }
 }
 */
-//почему не влазят большие значения??? Они не больше инта...
 
 
 /*3. Исправьте программу так. чтобы она выводила строку "Числа равны" ,
 но только при равенстве введенных чисел.*/
+/*
 #include <std_lib_facilities.h>
 int main()
 {
-  //  int x;
-  //  vector<int> nums;
- //   while (cin >> x)
-   //     nums.push_back(x);
- //   sort(nums);
-    //cout << "lowest value is: " << nums[0] << "\n" << "highest value is: " << nums[1] << "\n";
-   // for (int i = 0; i < nums.size(); ++i)
- //       if (nums[i-1] == nums[i])//|| nums[i - 1] == nums[i])
-   //         cout << nums[i] << " equal\n";
+    int lval;
+    int hval;
+    int x;
+    vector<int> nums;
+    while (cin >> x)
+        nums.push_back(x);
+    sort(nums);
+    for (int i = 0; i < nums.size(); ++i)
+    {
+        if (i == 0)
+        {
+            lval = nums[i];
+            cout << "Lowest value is: " << nums[i] << "\n";
+        }
+        else if (i == nums.size() - 1)
+        {
+            hval = nums[i];
+            cout << "Highest value is: " << nums[i] << "\n";
+        }
+    }
+    if (lval == hval)
+        cout << "Numbers " << lval << " and " << hval << " are equal.\n";
 }
+*/
+
+
+/*4. Измените программу так, чтобы она работала с числами типа douЬle, а не int.*/
+/*
+#include <std_lib_facilities.h>
+int main()
+{
+    double lval;
+    double hval;
+    double x;
+    vector<double> nums;
+    while (cin >> x)
+        nums.push_back(x);
+    sort(nums);
+    for (int i = 0; i < nums.size(); ++i)
+    {
+        if (i == 0)
+        {
+            lval = nums[i];
+            cout << "Lowest value is: " << nums[i] << "\n";
+        }
+        else if (i == nums.size() - 1)
+        {
+            hval = nums[i];
+            cout << "Highest value is: " << nums[i] << "\n";
+        }
+    }
+    if (lval == hval)
+        cout << "Numbers " << lval << " and " << hval << " are equal.\n";
+}
+*/
+
+/*5. Измените программу так.чтобы она выводила строку "Числа почти
+равны" , если числа отличаются одно от другого меньше чем на 1.0/100.*/
+/*
+#include <std_lib_facilities.h>
+int main()
+{
+    double lval;
+    double hval;
+    double x;
+    vector<double> nums;
+    while (cin >> x)
+        nums.push_back(x);
+    sort(nums);
+    for (int i = 0; i < nums.size(); ++i)
+    {
+        if (i == 0)
+        {
+            lval = nums[i];
+            cout << "Lowest value is: " << nums[i] << "\n";
+        }
+        else if (i == nums.size() - 1)
+        {
+            hval = nums[i];
+            cout << "Highest value is: " << nums[i] << "\n";
+        }
+    }
+    if (lval == hval)
+    {
+        cout << "Numbers " << lval << " and " << hval << " are equal.\n";
+    }
+    else if(lval + 1.0 / 100.0 > hval)
+    { 
+        cout << "Numbers " << lval << " and " << hval << " are almost equal.\n";
+    }
+}
+*/
+
+/*6. Теперь измените тело цикла так. чтобы он считывал только по одному
+числу типа douЬle в каждой итерации. Определите две переменные,
+чтобы отслеживать наименьшее и наибольшее среди всех ранее
+введенных значений. В каждой итерации цикла выводите только что
+введенное число. Если оно окажется наименьшим среди всех введенных,
+выводите на экран строку "Наименьшее среди введенных" . Если же
+оно окажется наибольшим среди введенных, выводите на экран строку
+" Наибольшее среди введенных" .*/
+
+//походу я так и сделал во 2 задании, как тогда надо было...?
+//добавил только элс и поменял инт на дабл.
+/*
+#include <std_lib_facilities.h>
+int main()
+{
+    double x;
+    vector<double> nums;
+    while (cin >> x)
+        nums.push_back(x);
+    sort(nums);
+    for (int i = 0; i < nums.size(); ++i)
+    {
+        if (i == 0)
+        {
+            cout << "Lowest value is: " << nums[i] << "\n";
+        }
+        else if (i == nums.size() - 1)
+        {
+            cout << "Highest value is: " << nums[i] << "\n";
+        }
+        else //добавил этот элс.
+            cout << nums[i] << "\n";
+    }
+}
+*/
+
+/*7. Добавьте к каждому введенному числу типа doube единицу измерения;
+иначе говоря, вводите такие значения, как 10cm, 2.5in, 5ft или
+3.33m.Допустимыми являются четыре единицы измерения : cm, m, in,ft.
+Примите следующие коэффициенты преобразования : 1m == 100cm,
+1in == 2.54cm, 1ft == 12in.Индикатор единицы измерения вводите в
+строку.Можно считать ввод 12m(с пробелом между числом и единицей 
+измерения) эквивалентным вводу 12m(без пробела).*/
+
+/*8. Если введена неправильная единица измерения, например yard,
+meter, km или gallons, то такое значение следует отклонить.*/
+
+
+/*9. Отслеживайте сумму введенных значений(помимо наименьшего и 
+наибольшего) и их количество.Когда цикл завершится, выведите на 
+экран наименьшее введенное значение, наибольшее введенное значение, 
+количество введенных значений и их сумму.Обратите внимание 
+на то, что.накапливая сумму.вы должны выбрать для нее единицу измерения 
+(используйте метры).*/
+
+
+/*10.Сохраняйте все введенные значения(преобразованные в метры) в векторе,
+а по завершении работы цикла выведите их на экран.*/
+
+
+/*11.Перед тем как вывести значения из вектора, отсортируйте их в порядке возрастания.*/
