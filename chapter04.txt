@@ -29,7 +29,6 @@ int main()
 */
 
 
-//p149 try
 /*ПОПРОБУЙТЕ
 Пе репишите программу преобразования валют из п редыдущего раздела,
 используя и нструкцию switch. Добавьте конвертацию евро и фунта стерлингов.
@@ -322,30 +321,170 @@ int main()
         {
             cout << "Highest value is: " << nums[i] << "\n";
         }
-        else //добавил этот элс.
+        else
             cout << nums[i] << "\n";
     }
 }
 */
 
+
 /*7. Добавьте к каждому введенному числу типа doube единицу измерения;
-иначе говоря, вводите такие значения, как 10cm, 2.5in, 5ft или
-3.33m.Допустимыми являются четыре единицы измерения : cm, m, in,ft.
+иначе говоря, вводите такие значения, как 10cm, 2.5in, 5ft или 3.33m.
+Допустимыми являются четыре единицы измерения : cm, m, in,ft.
 Примите следующие коэффициенты преобразования : 1m == 100cm,
 1in == 2.54cm, 1ft == 12in.Индикатор единицы измерения вводите в
 строку.Можно считать ввод 12m(с пробелом между числом и единицей 
 измерения) эквивалентным вводу 12m(без пробела).*/
+/*
+#include <std_lib_facilities.h>
+int main()
+{
+    constexpr double cm_per_m = 100.0;
+    constexpr double cm_per_in = 2.54;
+    constexpr double in_per_ft = 12.0;
+    double x;//nums
+    string y;//units
+    vector<double> nums;
+    vector<string> units;
+    while (cin >> x >> y)
+    {
+        nums.push_back(x);
+        units.push_back(y);
+    }
+
+    for (int i = 0; i < units.size(); ++i)
+    {
+        if (units[i] == "cm")
+        {
+            cout << nums[i];
+            cout << units[i] << "\n";
+        }
+        else if (units[i] == "m")
+        {
+            cout << nums[i] * cm_per_m;
+            units[i] = "cm";
+            cout << units[i] << "\n";
+        }
+        else if (units[i] == "in")
+        {
+            cout << nums[i] * cm_per_in;
+            units[i] = "cm";
+            cout << units[i] << "\n";
+        }
+        else if (units[i] == "ft")
+        {
+            cout << nums[i] * in_per_ft;
+            units[i] = "in";
+            cout << units[i] << "\n";
+        }
+        else;
+    }
+}
+*/
+
 
 /*8. Если введена неправильная единица измерения, например yard,
 meter, km или gallons, то такое значение следует отклонить.*/
 
+//еще работаю над этой задачей
+/*
+#include <std_lib_facilities.h>
+int main()
+{
+    constexpr double cm_per_m = 100.0;
+    constexpr double cm_per_in = 2.54;
+    constexpr double in_per_ft = 12.0;
+    double x;//nums
+    string y;//units
+    vector<double> nums;
+    vector<string> units;
+    while (cin >> x >> y)
+    {
+        nums.push_back(x);
+        units.push_back(y);
+    }
+
+    for (int i = 0; i < units.size(); ++i)
+    {
+        if (units[i] == "cm")
+        {
+            cout << nums[i];
+            cout << units[i] << "\n";
+        }
+        else if (units[i] == "m")
+        {
+            cout << nums[i] * cm_per_m;
+            units[i] = "cm";
+            cout << units[i] << "\n";
+        }
+        else if (units[i] == "in")
+        {
+            cout << nums[i] * cm_per_in;
+            units[i] = "cm";
+            cout << units[i] << "\n";
+        }
+        else if (units[i] == "ft")
+        {
+            cout << nums[i] * in_per_ft;
+            units[i] = "in";
+            cout << units[i] << "\n";
+        }
+        else
+            cout << "canceled\n";
+    }
+}
+*/
+
 
 /*9. Отслеживайте сумму введенных значений(помимо наименьшего и 
 наибольшего) и их количество.Когда цикл завершится, выведите на 
-экран наименьшее введенное значение, наибольшее введенное значение, 
-количество введенных значений и их сумму.Обратите внимание 
-на то, что.накапливая сумму.вы должны выбрать для нее единицу измерения 
-(используйте метры).*/
+экран:
+- наименьшее введенное значение,
+- наибольшее введенное значение, 
+- количество введенных значений 
+- их сумму.
+Обратите внимание на то, что,накапливая сумму,вы должны выбрать 
+для нее единицу измерения (используйте метры).*/
+
+//еще работаю над этой задачей
+#include <std_lib_facilities.h>
+int main()
+{
+    constexpr double cm_per_m = 100.0;
+    constexpr double cm_per_in = 2.54;
+    constexpr double in_per_ft = 12.0;
+    double x;//nums
+    string y;//units
+    vector <pair<double, string> > g;
+     while (cin >> x >> y)
+    {
+        g.push_back(make_pair(x, y));
+    }
+    sort(g);
+
+    double sum = 0;
+
+    for (int i = 0; i < g.size(); ++i)
+    {
+        if (g[i].second == "cm" || g[i].second == "m" || g[i].second == "in" || g[i].second == "ft")
+        {
+            if (i == 0)
+            {
+                cout << "Lowest value is: " << g[i].first << g[i].second << "\n";
+            }
+            else if (i == g.size() - 1)
+            {
+                cout << "Highest value is: " << g[i].first << g[i].second << "\n";
+            }
+            sum += g[i].first;
+        }
+        else;
+    }
+    cout << "Amount of values: " << g.size() << "\n";
+    cout << "Sum of values: " << sum << "\n";
+
+}
+
 
 
 /*10.Сохраняйте все введенные значения(преобразованные в метры) в векторе,
@@ -353,3 +492,4 @@ meter, km или gallons, то такое значение следует отк
 
 
 /*11.Перед тем как вывести значения из вектора, отсортируйте их в порядке возрастания.*/
+
