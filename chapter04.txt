@@ -397,81 +397,71 @@ meter, km или gallons, то такое значение следует отк
 10.Сохраняйте все введенные значения(преобразованные в метры) в векторе,
 а по завершении работы цикла выведите их на экран.
 11.Перед тем как вывести значения из вектора, отсортируйте их в порядке возрастания.*/
-
+/*
 #include <std_lib_facilities.h>
 int main()
 {
-    double temp_cm;
-    double temp_in;
-    double temp_ft;
+    constexpr double cm = 100.0; // const cm to m
+    constexpr double in = 39.3701; // const in to m
+    constexpr double ft = 3.28084; // const ft to m
+    double temp;
+    double sum = 0;
     double x;//nums
     string y;//units
     vector <pair<double, string> > g; //pair of vectors
-    vector <double> meters;
-    while (cin >> x >> y) //entering nums and units until ^z
+    vector <pair<double, int> > meters; //pair of vectors for min max
+    while (cin >> x >> y) //entering nums and units until ^z and clearing wrong values (not cm, m, in or ft)
     {
-        g.push_back(make_pair(x, y));
-    }
-    double sum = 0;
-    for (int i = 0; i < g.size(); ++i) //clearing wrong values (not cm, m, in or ft)
-    {
-        if (g[i].second == "cm" || g[i].second == "m" || g[i].second == "in" || g[i].second == "ft");
-        else
-            g.erase(g.begin() + i);
-    }
-    sort(g); //sorting vector
-    for (int i = 0; i < g.size(); ++i) //console output of lowest and highest number
-    {
-        if (i == 0)
-        {
-            cout << "Lowest value is: " << g[i].first << g[i].second << "\n";
-        }
-        else if (i == g.size() - 1)
-        {
-            cout << "Highest value is: " << g[i].first << g[i].second << "\n";
-        }
+        if (y == "cm" || y == "m" || y == "in" || y == "ft")
+            g.emplace_back(make_pair(x, y));
         else;
     }
-    for (int i = 0; i < g.size(); ++i) //converting everything to meters, summing and pushing to new meters vector
+    for (int i = 0; i < g.size(); ++i) //converting everything to meters, summing and pushing to new meters vector with static int index
     {
         if (g[i].second == "cm")
         {
-            temp_cm = g[i].first / 100.0;
-            sum += temp_cm;
-            meters.push_back(temp_cm);
+            temp = g[i].first / cm;
+            sum += temp;
+            meters.emplace_back(make_pair(temp, i));
         }
         else if (g[i].second == "in")
         {
-            temp_in = g[i].first / 39.3701;
-            sum += temp_in;
-            meters.push_back(temp_in);
+            temp = g[i].first / in;
+            sum += temp;
+            meters.emplace_back(make_pair(temp, i));
         }
         else if (g[i].second == "ft")
         {
-            temp_ft = g[i].first / 3.28084;
-            sum += temp_ft;
-            meters.push_back(temp_ft);
+            temp = g[i].first / ft;
+            sum += temp;
+            meters.emplace_back(make_pair(temp, i));
         }
         else
         {
             sum += g[i].first;
-            meters.push_back(g[i].first);
+            meters.emplace_back(make_pair(g[i].first, i));
         }
     }
+    sort(meters); //sorting vector meters
+    cout << "Lowest value is: " << g[meters[0].second].first << g[meters[0].second].second << "\n"; //console output lowest value
+    cout << "Highest value is: " << g[meters[meters.size() - 1].second].first << g[meters[meters.size() - 1].second].second << "\n"; //console output highest value
     cout << "Amount of values: " << g.size() << "\n";
     cout << "Sum of values: " << sum << "m" << "\n";
-
-    sort(meters); //sorting vector meters
     for (int j = 0; j < meters.size(); ++j) //console output meters vector
     {
-        cout << meters[j] << "\n";
+        cout << meters[j].first << "\t" << meters[j].second << "\n";
     }
 }
+*/
+/*
+1. Ти можеш робити перевірку валiдності одиниць виміру перед пишем, тоді не треба буде видаляти                 +
+2. Для виводу найменшого/найбільшого не треба цикл                                                              +
+3. Краще використовувати emplace_back замість push_back                                                         +
+4. Коефіцієнти перетворень мають бути іменовані константи, в тебе не правильно сантиметри перетворюються        
+*/
 
 
-
-
-
+/*
 1.Выполните задание Попробуйте.если еще не сделали этого раньше.
 +
 
@@ -634,3 +624,4 @@ scores[7] = 17). Прекратите ввод встретив строку в�
 выводила имена всех студентов, получивших указанное количество
 баллов, или сообщение " Баллы не найдены".
 */
+
